@@ -1,0 +1,252 @@
+%%% A template to produce a nice-looking Curriculum Vitae.
+%%% Kieran Healy <kjhealy@gmail.com>
+%%% Most recent version is at http://kjhealy.github.com/kjh-vita
+%%%
+%%% ------------------------------------------------------------------------
+%%% Requirements that are included in a modern tex distribution:
+%%% ------------------------------------------------------------------------
+%%% xelatex
+%%% fontspec.sty
+%%% hyperrref.sty
+%%% xunicode.sty
+%%% color.sty
+%%% url.sty
+%%% fancyhdr.sty
+%%% memoir.cls
+%%% fontawesome.sty
+%%%
+%%% 
+%%% 
+%%% ------------------------------------------------------------------------
+%%% Requirements from https://github.com/kjhealy/latex-custom-kjh
+%%% ------------------------------------------------------------------------
+%%% org-preamble-xelatex.sty
+%%% memoir-article-styles.sty
+%%%
+%%% ------------------------------------------------------------------------
+%%% Optional
+%%% ------------------------------------------------------------------------
+%%% git
+%%% vc.sty
+%%% revnum.sty
+%%% Fonts
+%%%
+%%% ------------------------------------------------------------------------
+%%% Note
+%%%------------------------------------------------------------------------
+%%% Because this is a hand-tweaked file, be on the look out for \medksip, 
+%%% \bigskip and \newpage commands here and there, which are used to balance
+%%% the layout or avoid widows & orphans, etc. You should of course add or 
+%%% remove these as needed.
+%%%------------------------------------------------------------------------
+
+\documentclass[11pt,article,oneside]{memoir}   
+\usepackage{org-preamble-xelatex} 
+\usepackage{fontawesome,url}
+\usepackage{xeCJK}
+\setCJKmainfont[BoldFont=Heiti SC Light,ItalicFont=Kaiti SC]
+  {Songti SC Light}
+\setCJKsansfont{Heiti SC Light}
+\setCJKmonofont{Songti SC Light}
+
+
+%%%------------------------------------------------------------------------
+%%% Metadata
+%%%------------------------------------------------------------------------
+
+%% Change as needed. Or just add me as a coauthor. Only some of these are 
+%% used below in the hyperref declaration and address banner section.
+\def\myauthor{Kaicheng Yang}
+\def\mytitle{Vita}
+\def\mycopyright{\myauthor}
+\def\mykeywords{}
+\def\mybibliostyle{plain}
+\def\mybibliocommand{}
+\def\mysubtitle{}
+\def\myaffiliation{Lanzhou University}
+\def\myaddress{Institute of Computational Physics and Complex Systems}
+\def\myemail{yang3kaicheng@gmail.com}
+\def\myweb{}
+\def\myphone{}
+\def\myfax{}
+\def\mytwitter{}
+\def\myversion{}
+\def\myrevision{}
+
+
+\def\myaffiliation{Lanzhou University}
+\def\myauthor{Kaicheng Yang}
+\date{} % not used (revision control instead)
+\def\mykeywords{}
+
+%%%------------------------------------------------------------------------  
+%%% Git version tracking 
+%%%------------------------------------------------------------------------
+
+%% If you don't use git or the vc package (from CTAN), comment this out.
+%% If you comment it out, be sure to remove the \rfoot comment below, too.
+%\input{vc}
+
+%%%------------------------------------------------------------------------
+%%% Document
+%%%------------------------------------------------------------------------
+\begin{document}
+
+%% Choose fonts for use with xelatex
+%% Minion and Myriad are widely available, from Adobe. 
+%% Pragmata is available to buy at http://www.fsd.it/fonts/pragma.htm
+%% and is worth every penny. Any good monospace font will work fine, though.
+%% Consolas or inconsolata are good alternatives.
+% 
+% commented by Karol Kozioł
+% \setromanfont[Mapping={tex-text}, 
+% 	Numbers={OldStyle},
+% 	Ligatures={Common}]{Minion Pro}
+% \setsansfont[Mapping=tex-text,
+% 	Ligatures={Common}, 
+% 	Colour=AA0000]{Unit-Medium}
+% \setmonofont[Mapping=tex-text,Scale=0.72]{PragmataPro} 
+
+% \newfontface\scheader[SmallCapsFont={Minion Pro},SmallCapsFeatures={Letters=SmallCaps}]{Minion Pro}
+
+% \newfontface\addressblock[Mapping={tex-text}, 
+% 	Numbers={OldStyle},
+% 	Ligatures={Common}]{Minion Pro Medium Caption}
+% 
+
+% added by Karol Kozioł to fit ShareLaTeX
+\setromanfont[
+Mapping={tex-text}, 
+Numbers={OldStyle},
+Ligatures={Common},
+BoldFont=CrimsonText-Bold.ttf,
+ItalicFont=CrimsonText-Italic.ttf,
+BoldItalicFont=CrimsonText-BoldItalic.ttf
+]{CrimsonText-Roman.ttf}
+
+\setsansfont[
+Mapping=tex-text,
+Ligatures={Common}, 
+Colour=AA0000,
+BoldFont=Lato-Bold.ttf,
+ItalicFont=Lato-Italic.ttf,
+BoldItalicFont=Lato-BoldItalic.ttf
+]{Lato-Regular.ttf}
+	
+\setmonofont[Mapping=tex-text,Scale=0.72]{texgyrecursor-regular.otf} 
+
+\newfontface\scheader[SmallCapsFont={LinLibertine_R.otf},SmallCapsFeatures={Letters=SmallCaps}]{LinLibertine_R.otf}
+
+\newfontface\addressblock[Mapping={tex-text}, 
+	Numbers={OldStyle},
+	Ligatures={Common}]{CrimsonText-Roman.ttf}
+
+
+%%%------------------------------------------------------------------------
+%%% Local commands
+%%%------------------------------------------------------------------------
+
+%% Marginal header
+%% Note: as the document goes on you may need to introduce a (gradually increasing)
+%% \vspace element to keep the marginal header pleasingly aligned with the first 
+%% item in the body text. Like this: \marginhead{{\vskip 0.4em}Grants}, or 
+%% \marginhead{{\vskip 0.8em}Service}. Experiment as needed.
+\newcommand{\marginhead}[1]{\marginpar{\textsf{{\footnotesize\vspace{-1em}\flushright #1}}}}
+
+
+%% [optional] custom ampersand (font consistent with the one chosen above)
+% \newcommand{\amper}{{\fontspec[Scale=.95,Colour=AA0000]{Minion Pro Medium}\selectfont\&\,}}
+
+%% No bullets on labels
+\renewcommand{\labelitemi}{~} 
+
+%% Custom hanging indent for vita items
+\def\ind{\hangindent=1 true cm\hangafter=1 \noindent}
+%\def\ind{\hangindent=18pt\hangafter=1 \noindent}
+\def\labelitemi{~}
+\renewcommand{\labelitemii}{~}
+
+%%%------------------------------------------------------------------------
+%%% Page layout
+%%%------------------------------------------------------------------------
+
+% These lines will insert git revision info in the footer, using the vc
+% package---see docs for vc package for details. Comment out this line
+% if you're not using vc, and also remove the \input{vc} line above.
+\pagestyle{kjh}
+%\thispagestyle{kjhgit}
+
+
+%%%------------------------------------------------------------------------
+%%% Address and contact block
+%%%------------------------------------------------------------------------
+\hfill     
+%\begin{minipage}[t]{0.0in}
+ %dummy (needed here)
+%\end{minipage}
+\hfill
+\begin{minipage}[t]{2.95in}
+ \flushright {\footnotesize 
+ Institute of Computational Physics and Complex Systems \\ School of Physical Science and Technology \\ Lanzhou University \\ Lanzhou, Gansu 730000, China \\ \href{mailto:\myemail}{\myemail}
+ }
+\end{minipage}
+
+
+\medskip
+
+%% Name 
+\noindent{\LARGE\scheader \textsc{Kaicheng Yang (杨凯程)}}
+\reversemarginpar
+
+\bigskip       
+
+%% Education
+
+\marginhead{\sffamily {{\vskip -0.23em}  education}}
+
+\ind M.S. in Theoretical Physics, School of Physical Science and Technology, \\ Lanzhou University, China, 9/2014-present
+
+\ind \hspace{0.35in} \footnotesize Thesis: \emph{Expansion Dynamics of Cooperatively Growing Populations on Networks} \normalsize \vspace{0.01in}
+
+\ind \hspace{0.35in} \footnotesize Advisor: Prof. \href{http://phy.lzu.edu.cn/lzupage/2013/04/08/N20130408100301.html}{Zhixi Wu} \normalsize \vspace{0.01in}
+
+
+\ind B.S. in Theoretical Physics, School of Physical Science and Technology, \\ Lanzhou University, China, 9/2010-6/2014
+
+\ind \hspace{0.35in} \footnotesize Thesis: \emph{Study on Density-independent Models of Self-propelled Particles} \normalsize \vspace{0.01in}
+
+\ind \hspace{0.35in} \footnotesize Advisor: Prof. \href{http://phy.lzu.edu.cn/lzupage/2013/04/08/N20130408100301.html}{Zhixi Wu} \normalsize \vspace{0.01in}
+
+\bigskip
+ 
+
+%% Publications
+\marginhead{\sffamily {\vskip 0.35em} publications}
+\medskip
+
+\ind \textbf{K.-C. Yang}, Z.-X Wu, P. Holme and E. Nonaka \emph{Expansion of Cooperatively Growing Populations: Optimal Migration Rates and Habitat Network Structures}. Phys. Rev. E \textbf{95}: 012306, Jan. 2017
+
+\bigskip
+
+%% Skills
+
+\marginhead{\sffamily {{\vskip 0.35em} computing skills}}
+\medskip
+
+\ind Proficient in C/C++, Python and Mathematica for academic usage
+
+\bigskip
+\bigskip
+
+\bigskip
+
+%% Talks
+
+\marginhead{\sffamily {{\vskip 0.35em} talks}}
+\medskip
+
+\ind \emph{Expansion of Cooperatively Growing Populations on Networks}, Chinese Physical Society Fall Meeting, Sep. 4, 2016, Beijing University of Technology, Beijing, China
+
+\bigskip
+
+\end{document}
